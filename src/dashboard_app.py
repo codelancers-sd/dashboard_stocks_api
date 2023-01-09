@@ -43,38 +43,43 @@ def make_portfolio_chart(data_df, title):
         line=dict(width=4, color="#307ccf"),
         yaxis='y1')
 
+    name0 = data_df[data_df['0__name'].notna()]['0__name'].unique()[0]
     stock1_line = go.Scatter(
         x=data_df.index, 
         y=data_df["0__value"],
         mode="lines+markers",
         hovertext=hovertext,
         showlegend=True,
-        name=f"{data_df['0__name'].iloc[0]}",
+        name=f"{name0}",
         opacity = 0.2,
         line=dict(width=4, color="#e41b47"),
         yaxis='y1')
+
+    name1 = data_df[data_df['1__name'].notna()]['1__name'].unique()[0]
     stock2_line = go.Scatter(
         x=data_df.index, 
         y=data_df["1__value"],
         mode="lines+markers",
         hovertext=hovertext,
         showlegend=True,
-        name=f"{data_df['1__name'].iloc[0]}",
+        name=f"{name1}",
         opacity = 0.2,
         line=dict(width=4, color="#2bd481"),
         yaxis='y1')
+
+    name2 = data_df[data_df['2__name'].notna()]['2__name'].unique()[0]
     stock3_line = go.Scatter(
         x=data_df.index, 
         y=data_df["2__value"],
         mode="lines+markers",
         hovertext=hovertext,
         showlegend=True,
-        name=f"{data_df['2__name'].iloc[0]}",
+        name=f"{name2}",
         opacity = 0.2,
         line=dict(width=4, color="#f8ba07"),
         yaxis='y1')
 
-    layout = go.Layout(yaxis=dict(title='Position'))
+    layout = go.Layout(yaxis=dict(title='Portfolio value'))
     fig_plotly = go.Figure( data=[port_evol, stock1_line, stock2_line, stock3_line], layout=layout)
     fig_plotly.update_layout(
         autosize=False,
