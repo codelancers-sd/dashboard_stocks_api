@@ -210,7 +210,7 @@ with tab1:
 
         stock_name = stock_name_complex.split("--")[0].strip()
 
-        url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={stock_name}&apikey={key}'
+        url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock_name}&apikey={key}'
         r = requests.get(url)
         data_json = r.json()
 
